@@ -1,6 +1,6 @@
 let displayInput = document.querySelector('.input');
 let displayOutput = document.querySelector('.output');
-let clearAll = document.querySelector('[data-for="AC"]');
+/* let clearAll = document.querySelector('[data-for="AC"]');
 let del = document.querySelector('[data-for="DEL"]');
 let divide = document.querySelector('[data-for="/"]');
 let one = document.querySelector('[data-for="1"]');
@@ -17,18 +17,55 @@ let nine = document.querySelector('[data-for="9"]');
 let subtract = document.querySelector('[data-for="-"]');
 let decimal = document.querySelector('[data-for="."]');
 let zero = document.querySelector('[data-for="0"]');
-let equals = document.querySelector('[data-for="="]');
+let equals = document.querySelector('[data-for="="]'); */
 
-function appendOne() {
-    let no1 = document.createElement('p');
-    no1.textContent = "1"
-    displayInput.appendChild(no1);
+function appendElement(character) {
+    let inputtedFig = document.createElement('p');
+    inputtedFig.textContent = character;
+    displayInput.appendChild(inputtedFig);
     }
-    one.addEventListener('click', ()=>{
-        appendOne()
-    })
-document.addEventListener('keydown',(event)=>{
-    if(event.key === "1"){
-        appendOne()
+
+function clear(){
+    displayInput.innerHTML= ""
+    displayOutput.innerHTML=""
     }
+
+function clearLast(){
+if (displayInput.lastChild){
+    displayInput.removeChild(displayInput.lastChild)
+}
+}
+
+function evaluateExpression() {
+try{
+    let result = math.evaluate(displayInput.textContent);
+    displayOutput.textContent = result
+}
+catch(error){
+displayOutput.textContent = "error"
+}
+
+}
+
+document.querySelectorAll('.btns button').forEach(button => {
+    let value = button.getAttribute('data-for');
+
+button.addEventListener('click',()=>{
+    if(value === "AC"){
+        clear()
+    } else if (value === "DEL"){
+clearLast()
+    } else if (value === "="){
+        evaluateExpression()
+    }
+    else {appendElement(value)}
 })
+   });
+
+   document.addEventListener('keydown',(event)=>{
+    if(event.key === "Backspace"){
+        clearLast()
+   } else if (event.key === "Enter"){
+    evaluateExpression()
+   }
+   })
