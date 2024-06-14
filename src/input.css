@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.calculator{
+    @apply grid bg-black w-fit mt-12 ml-64 border-solid border-black border-2;  
+}
+.display{
+    @apply bg-white h-14 ;  
+}
+.input{
+    @apply flex;  
+}
+.btns{
+    @apply grid grid-cols-4 text-white w-72 gap-2; 
+    button{
+        @apply bg-slate-500 hover:bg-slate-950 cursor-pointer;  
+    }
+}
