@@ -67,5 +67,7 @@ clearLast()
         clearLast()
    } else if (event.key === "Enter"){
     evaluateExpression()
+   } else if (event.key >0 || event.key<9){
+    evaluateExpression()
    }
    })
