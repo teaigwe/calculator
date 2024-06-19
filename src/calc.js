@@ -39,7 +39,7 @@ if (displayInput.lastChild){
 function evaluateExpression() {
 try{
     let result = math.evaluate(displayInput.textContent);
-    displayOutput.textContent = result
+    displayOutput.textContent = result;
 }
 catch(error){
 displayOutput.textContent = "error"
@@ -62,12 +62,15 @@ clearLast()
 })
    });
 
-   document.addEventListener('keydown',(event)=>{
-    if(event.key === "Backspace"){
-        clearLast()
-   } else if (event.key === "Enter"){
-    evaluateExpression()
-   } else if (event.key >0 || event.key<9){
-    evaluateExpression()
-   }
-   })
+   document.addEventListener('keydown', (event) => {
+    if (event.key === "Backspace") {
+        clearLast();
+    } else if (event.key === "Enter" || event.key ==="=") {
+        evaluateExpression();
+    } else {
+        let otherkeys = "0987654321./+-*";
+        if (otherkeys.includes(event.key)) {
+            appendElement(event.key);
+        }
+    }
+});
