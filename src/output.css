@@ -558,13 +558,16 @@ video {
   grid-column: span 2 / span 2;
 }
 
-.grid {
-  display: grid;
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
 }
 
 .calculator {
-  margin-top: 3rem;
-  margin-left: 16rem;
+  margin-top: 9rem;
   display: grid;
   width: -moz-fit-content;
   width: fit-content;

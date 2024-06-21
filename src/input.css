@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+    @apply flex justify-center items-center bg-slate-500;
+}
 .calculator{
-    @apply grid bg-black w-fit mt-12 ml-64 border-solid border-black border-2;  
+    @apply grid bg-black w-fit mt-36 border-solid border-black border-2;  
 }
 .display{
     @apply bg-white h-14 ;  
